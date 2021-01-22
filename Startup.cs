@@ -26,6 +26,9 @@ namespace BethanyPieShop
 
       services.AddScoped<IPieRepository, PieRepository>();
       services.AddScoped<ICategoryRepository, CategoryRepository>();
+      services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+      services.AddHttpContextAccessor();
+      services.AddSession();
       //services.AddScoped<IPieRepository, MockPieRepository>();
       //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
       services.AddControllersWithViews(); //AddMvc() in ASP.Net Core 2.1
@@ -44,6 +47,7 @@ namespace BethanyPieShop
       app.UseHttpsRedirection();
       app.UseStatusCodePages();
       app.UseStaticFiles(); //search any directory called wwwroot folder
+      app.UseSession(); // call this before useRouting
       app.UseRouting();
 
       app.UseEndpoints(endpoints =>

@@ -69,3 +69,6 @@ C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\bin\Debug\net5.0\ru
 C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\BethanyPieShop.csprojAssemblyReference.cache
 C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\Razor\Views\Pie\Details.cshtml.g.cs
 C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\Razor\Views\Index.cshtml.g.cs
+C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\Razor\Views\Shared\_PieContainer.cshtml.g.cs
+C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\mari-aiza.canoy\pluralsight_projects\BethanyPieShop\obj\Debug\net5.0\Razor\Views\Shared\_Carousel.cshtml.g.cs
