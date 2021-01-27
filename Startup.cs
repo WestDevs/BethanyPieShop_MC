@@ -1,6 +1,7 @@
 using BethanyPieShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,15 +25,17 @@ namespace BethanyPieShop
       services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
+      services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
       services.AddScoped<IPieRepository, PieRepository>();
       services.AddScoped<ICategoryRepository, CategoryRepository>();
+      services.AddScoped<IOrderRepository, OrderRepository>();
       services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
       services.AddHttpContextAccessor();
       services.AddSession();
       //services.AddScoped<IPieRepository, MockPieRepository>();
       //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
       services.AddControllersWithViews(); //AddMvc() in ASP.Net Core 2.1
-
+      services.AddRazorPages();
 
     }
 
@@ -49,12 +52,16 @@ namespace BethanyPieShop
       app.UseStaticFiles(); //search any directory called wwwroot folder
       app.UseSession(); // call this before useRouting
       app.UseRouting();
+      app.UseAuthentication();
+      app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
           name: "default",
           pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        endpoints.MapRazorPages();
         //endpoints.MapGet("/", async context =>
         //      {
         //        await context.Response.WriteAsync("Hello World!");
